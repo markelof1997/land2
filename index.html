@@ -3,29 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Промо-группа Telegram</title>
+  <title>Amayaboutique — Скидка -25%</title>
+  <link href="https://fonts.googleapis.com/css2?family=Unica+One&family=Raleway:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #000;
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #fff;
-      font-family: sans-serif;
       text-align: center;
-      padding-top: 20%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-size: cover;
     }
-    a.button {
+
+    .logo {
+      font-family: 'Unica One', cursive;
+      font-size: 2.8em;
+      color: #ff3366;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.2em;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 1.5em;
+      color: #bbbbbb;
+    }
+
+    .timer {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+      background: #1f1f1f;
+      border: 2px solid #ff3366;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-bottom: 2em;
       display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      background: #29b6f6;
-      color: #fff;
-      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 28px;
+      background: linear-gradient(45deg, #ff0055, #ff3366);
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 40px;
       text-decoration: none;
-      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+      animation: pulse 2s infinite;
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); }
+      50% { box-shadow: 0 0 30px rgba(255, 0, 85, 1); }
+      100% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); }
+    }
+
+    @media screen and (max-width: 600px) {
+      .logo { font-size: 2em; }
+      h1 { font-size: 1.6em; }
+      p { font-size: 1em; padding: 0 20px; }
+      .timer { font-size: 1.2em; padding: 8px 16px; }
+      .button { padding: 14px 24px; font-size: 1em; }
     }
   </style>
 </head>
 <body>
-  <h1>🔥 Вход в закрытую группу</h1>
-  <a class="button" href="https://t.me/+qrix3MFB2nJiN2Iy" target="_blank">Перейти в Telegram</a>
+  <div class="logo">Amayaboutique</div>
+  <h1>🔥 Только сегодня! -25% на топовые новинки</h1>
+  <p>Остались последние позиции — зайди, пока не разобрали!</p>
+  <div class="timer" id="countdown">00:00:00</div>
+  <a class="button" href="https://t.me/+qrix3MFB2nJiN2Iy" target="_blank">Смотреть со скидкой →</a>
+
+  <script>
+    // Установка таймера (3 часа с момента захода)
+    let deadline = new Date(Date.parse(new Date()) + 3 * 60 * 60 * 1000);
+
+    function updateClock() {
+      let now = new Date();
+      let t = deadline - now;
+
+      let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+      let minutes = Math.floor((t / 1000 / 60) % 60);
+      let seconds = Math.floor((t / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        ('0' + hours).slice(-2) + ":" +
+        ('0' + minutes).slice(-2) + ":" +
+        ('0' + seconds).slice(-2);
+
+      if (t <= 0) {
+        clearInterval(timeinterval);
+        document.getElementById("countdown").innerHTML = "00:00:00";
+      }
+    }
+
+    updateClock();
+    let timeinterval = setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
+
