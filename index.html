@@ -10,7 +10,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Raleway', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: #fff;
       text-align: center;
       display: flex;
@@ -18,7 +17,25 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-size: cover;
+      overflow: hidden;
+    }
+
+    /* Анимированный градиент */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(270deg, #1a1a1a, #ff0055, #1a1a1a);
+      background-size: 600% 600%;
+      z-index: -1;
+      animation: gradientMove 15s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .logo {
@@ -38,14 +55,14 @@
     p {
       font-size: 1.1em;
       margin-bottom: 1.5em;
-      color: #bbbbbb;
+      color: #eeeeee;
     }
 
     .timer {
       font-size: 1.5em;
       font-weight: bold;
       color: #ffffff;
-      background: #1f1f1f;
+      background: rgba(0, 0, 0, 0.3);
       border: 2px solid #ff3366;
       padding: 10px 20px;
       border-radius: 10px;
@@ -95,31 +112,26 @@
   <a class="button" href="https://t.me/+qrix3MFB2nJiN2Iy" target="_blank">Смотреть со скидкой →</a>
 
   <script>
-    // Установка таймера (3 часа с момента захода)
     let deadline = new Date(Date.parse(new Date()) + 3 * 60 * 60 * 1000);
-
     function updateClock() {
       let now = new Date();
       let t = deadline - now;
-
       let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
       let minutes = Math.floor((t / 1000 / 60) % 60);
       let seconds = Math.floor((t / 1000) % 60);
-
       document.getElementById("countdown").innerHTML =
         ('0' + hours).slice(-2) + ":" +
         ('0' + minutes).slice(-2) + ":" +
         ('0' + seconds).slice(-2);
-
       if (t <= 0) {
         clearInterval(timeinterval);
         document.getElementById("countdown").innerHTML = "00:00:00";
       }
     }
-
     updateClock();
     let timeinterval = setInterval(updateClock, 1000);
   </script>
 </body>
 </html>
+
 
