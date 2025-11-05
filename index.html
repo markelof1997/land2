@@ -46,25 +46,10 @@
 <body>
   <h1>THE ULTIMATE COMMUNITY</h1>
   <p>Комьюнити единомышленников, которое помогает быстрее достигать результатов в работе.</p>
-  <a id="openTelegram" class="button" href="#">ПРИСОЕДИНИТЬСЯ</a>
-
-  <script>
-    const telegramAppLink = "tg://resolve?domain=amayaboutique";
-    const telegramWebLink = "https://web.telegram.org/k/#@amayaboutique";
-
-    const button = document.getElementById("openTelegram");
-
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      // Попытка открыть Telegram приложение
-      window.location.href = telegramAppLink;
-
-      // Через 2 секунды — fallback на web Telegram
-      setTimeout(() => {
-        window.location.href = telegramWebLink;
-      }, 2000);
-    });
-  </script>
+  
+  <!-- Кнопка ведёт напрямую на Web Telegram -->
+  <a class="button" href="https://web.telegram.org/k/#@amayaboutique" target="_blank" rel="noopener noreferrer">
+    ПРИСОЕДИНИТЬСЯ
+  </a>
 </body>
 </html>
