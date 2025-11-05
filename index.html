@@ -27,18 +27,18 @@
       color: #ccc;
       max-width: 500px;
     }
-    a.button {
-      display: inline-block;
+    button {
       background: #00ff99;
       color: #000;
-      text-decoration: none;
+      border: none;
       padding: 16px 32px;
       border-radius: 8px;
       font-weight: bold;
       font-size: 1rem;
+      cursor: pointer;
       transition: transform 0.3s;
     }
-    a.button:hover {
+    button:hover {
       transform: scale(1.05);
     }
   </style>
@@ -47,9 +47,19 @@
   <h1>THE ULTIMATE COMMUNITY</h1>
   <p>Комьюнити единомышленников, которое помогает быстрее достигать результатов в работе.</p>
   
-  <!-- Кнопка ведёт напрямую на Web Telegram -->
-  <a class="button" href="https://ultimatecommunity.mssg.me/" target="_blank" rel="noopener noreferrer">
-    ПРИСОЕДИНИТЬСЯ
-  </a>
+  <!-- Кнопка с JS-редиректом -->
+  <button onclick="redirect()">ПРИСОЕДИНИТЬСЯ</button>
+
+  <script>
+    function redirect() {
+      // Показываем сообщение вместо контента
+      document.body.innerHTML = "<h2 style='text-align:center; margin-top:40vh;'>Переходим в Ultimate Community...</h2>";
+      
+      // Через 2 секунды делаем редирект
+      setTimeout(() => {
+        window.location.href = "https://ultimatecommunity.mssg.me/";
+      }, 2000);
+    }
+  </script>
 </body>
 </html>
