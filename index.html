@@ -1,149 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<header style="text-align:center; padding: 30px 20px;">
-  <h1 style="color: white; font-family: 'Montserrat', sans-serif; font-size: 36px; margin-bottom: 10px;">
-    STYLE ROOM
-  </h1>
-  <p style="color: #white; font-size: 16px; font-family: 'Montserrat', sans-serif;">
-    Твій гід у світі стилю та трендів: взуття, одяг, аксесуари
-  </p>
-</header>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Amayaboutique — Знижки -25%</title>
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Unica+One&family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE ULTIMATE COMMUNITY</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Raleway', sans-serif;
-      color: #fff;
-      text-align: center;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Анимированный градиент */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(270deg, #1a1a1a, #ff0055, #1a1a1a);
-      background-size: 600% 600%;
-      z-index: -1;
-      animation: gradientMove 15s ease infinite;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .logo {
-      font-family: 'Unica One', cursive;
-      font-size: 2.8em;
-      color: #ff3366;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+      text-align: center;
     }
 
     h1 {
-      font-size: 2em;
-      margin-bottom: 0.2em;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
     }
 
     p {
-      font-size: 1.1em;
-      margin-bottom: 1.5em;
-      color: #eeeeee;
+      max-width: 600px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin-bottom: 2rem;
     }
 
-    .timer {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.3);
-      border: 2px solid #ff3366;
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin-bottom: 2em;
-      display: inline-block;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 16px 28px;
-      background: linear-gradient(45deg, #ff0055, #ff3366);
-      color: white;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 40px;
+    a.button {
+      background: #ffffff;
+      color: #000000;
       text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
       font-weight: bold;
-      box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
-      animation: pulse 2s infinite;
-      transition: transform 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    .button:hover {
+    a.button:hover {
+      background: #00ff99;
+      color: #000;
       transform: scale(1.05);
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); }
-      50% { box-shadow: 0 0 30px rgba(255, 0, 85, 1); }
-      100% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); }
-    }
-
-    @media screen and (max-width: 600px) {
-      .logo { font-size: 2em; }
-      h1 { font-size: 1.6em; }
-      p { font-size: 1em; padding: 0 20px; }
-      .timer { font-size: 1.2em; padding: 8px 16px; }
-      .button { padding: 14px 24px; font-size: 1em; }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.8rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <div class="logo">Amayaboutique</div>
-  <h1>🔥 Тільки сьогодні -25% на усі новинки</h1>
-  <div class="timer" id="countdown">00:00:00</div>
-  <a class="button" href="https://cutt.ly/nrXKVbh5" target="_blank">Дивитися зі знижкою (каталог) →</a>
-
-  <script>
-    let deadline = new Date(Date.parse(new Date()) + 3 * 60 * 60 * 1000);
-    function updateClock() {
-      let now = new Date();
-      let t = deadline - now;
-      let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-      let minutes = Math.floor((t / 1000 / 60) % 60);
-      let seconds = Math.floor((t / 1000) % 60);
-      document.getElementById("countdown").innerHTML =
-        ('0' + hours).slice(-2) + ":" +
-        ('0' + minutes).slice(-2) + ":" +
-        ('0' + seconds).slice(-2);
-      if (t <= 0) {
-        clearInterval(timeinterval);
-        document.getElementById("countdown").innerHTML = "00:00:00";
-      }
-    }
-    updateClock();
-    let timeinterval = setInterval(updateClock, 1000);
-  </script>
-</body>
-</html>
-
-
+  <main>
+    <h1>THE ULTIMATE COMMUNITY</h1>
+    <p>
+      Это сообщество единомышленников, где каждый получает поддержку, мотивацию и знания, 
+      чтобы быстрее достига
