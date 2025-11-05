@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE ULTIMATE COMMUNITY</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Inter', Arial, sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: white;
+      background: linear-gradient(135deg, #0a0a0a, #1e1e1e);
+      color: #ffffff;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
     }
 
     p {
+      font-size: 1.2rem;
+      color: #cfcfcf;
       max-width: 600px;
+      margin: 0 auto 2rem auto;
       line-height: 1.6;
-      font-size: 1.1rem;
-      color: #cccccc;
-      margin-bottom: 2rem;
     }
 
-    a.button {
-      background: #ffffff;
+    .button {
+      display: inline-block;
+      background-color: #ffffff;
       color: #000000;
+      font-weight: 600;
       text-decoration: none;
-      padding: 0.9rem 2rem;
+      padding: 1rem 2.2rem;
       border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      transition: all 0.25s ease-in-out;
     }
 
-    a.button:hover {
-      background: #00ff99;
+    .button:hover {
+      background-color: #00ff99;
       color: #000;
       transform: scale(1.05);
     }
 
     footer {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
-      font-size: 0.8rem;
-      color: #666;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
@@ -61,5 +63,13 @@
   <main>
     <h1>THE ULTIMATE COMMUNITY</h1>
     <p>
-      Это сообщество единомышленников, где каждый получает поддержку, мотивацию и знания, 
-      чтобы быстрее достига
+      Сообщество единомышленников, которое помогает каждому быстрее достигать результатов в работе — 
+      через поддержку, обмен опытом и новые идеи.
+    </p>
+    <a href="https://ultimatecommunity.mssg.me/" class="button" target="_blank" rel="noopener noreferrer">
+      ПРИСОЕДИНИТЬСЯ
+    </a>
+  </main>
+  <footer>© THE ULTIMATE COMMUNITY</footer>
+</body>
+</html>
