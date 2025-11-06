@@ -47,18 +47,12 @@
   <h1>THE ULTIMATE COMMUNITY</h1>
   <p>Комьюнити единомышленников, которое помогает быстрее достигать результатов в работе.</p>
   
-  <!-- Кнопка с JS-редиректом -->
-  <button onclick="redirect()">ПРИСОЕДИНИТЬСЯ</button>
+  <!-- Кнопка без редиректа -->
+  <button onclick="join()">ПРИСОЕДИНИТЬСЯ</button>
 
   <script>
-    function redirect() {
-      // Показываем сообщение вместо контента
-      document.body.innerHTML = "<h2 style='text-align:center; margin-top:40vh;'>Переходим в Ultimate Community...</h2>";
-      
-      // Через 2 секунды делаем редирект
-      setTimeout(() => {
-        window.location.href = "tg://join?invite=+ZWM52EiIDMo2ZmJi";
-      }, 2000);
+    function join() {
+      alert("Спасибо за интерес! Функция присоединения будет доступна позже.");
     }
   </script>
 </body>
