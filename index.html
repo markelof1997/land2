@@ -44,12 +44,19 @@
 <script>
 function openTG() {
   const user = "amayaboutique";
-  // Пробуем открыть приложение
-  window.location.href = "tg://resolve?domain=" + user;
-  // Если Telegram не установлен — fallback в веб (за пределами TikTok)
+
+  // Принудительно выкидываем из браузера TikTok в Safari
+  window.location.href = "intent://t.me/" + user + "#Intent;scheme=https;package=com.android.chrome;end";
+
+  // После выхода — пробуем открыть приложение Telegram
+  setTimeout(() => {
+    window.location.href = "tg://resolve?domain=" + user;
+  }, 300);
+
+  // Если нет приложения — fallback на web, но уже в Safari
   setTimeout(() => {
     window.location.href = "https://t.me/" + user;
-  }, 600);
+  }, 900);
 }
 </script>
 
