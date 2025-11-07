@@ -38,37 +38,28 @@
 <body>
   <div class="wrap">
     <h1>Переход в Telegram</h1>
-    <button class="btn" onclick="openTG()">Перейти</button>
+    <button onclick="redirect()">Перейти в Telegram</button>
   </div>
 
 <script>
-function openTG() {
-  const user = "amayaboutique";
-
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  if (isIOS) {
-    // 1. Выталкиваем из TikTok во внешнее приложение (App Store)
-    window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
-
-    // 2. Ждем пока App Store откроется (человек жмет "Відкрити" → Telegram открывается)
-    // 3. Потом Telegram получает ссылку на канал из Safari
-    setTimeout(() => {
-      // Сначала открываем Safari:
-      window.open("https://t.me/" + user, "_blank");
-    }, 1800);
-
-  } else {
-    // Android
-    window.location.href = "intent://t.me/" + user + "#Intent;scheme=https;package=com.android.chrome;end";
-    setTimeout(() => {
-      window.location.href = "tg://resolve?domain=" + user;
-    }, 400);
-    setTimeout(() => {
-      window.location.href = "https://t.me/" + user;
-    }, 1000);
-  }
+function redirect() {
+  const url = window.location.href.split('?')[0] + '?open=1';
+  window.location.href = url;
 }
+
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  
+  if (params.get('open') === '1') {
+    setTimeout(() => {
+      window.location = "tg://resolve?domain=amayaboutique";
+    }, 400);
+
+    setTimeout(() => {
+      window.location.href = "https://t.me/amayaboutique";
+    }, 1200);
+  }
+})();
 </script>
 
 </body>
