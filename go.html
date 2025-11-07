@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Переходим в Telegram...</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background: #fafafa;
+      color: #333;
+    }
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ccc;
+      border-top-color: #0088cc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <h2>Переходим в Telegram...</h2>
+  <div class="loader"></div>
+  <p>Если не открылось — <a href="https://t.me/theultimatee" target="_blank">нажмите сюда</a>.</p>
+
+  <script>
+    // Попытка открыть Telegram напрямую через ссылку
+    const telegramLink = "https://t.me/theultimatee";
+
+    // Проверяем, открываем ли в TikTok встроенном браузере
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isTikTok = /tiktok/i.test(userAgent);
+
+    if (isTikTok) {
+      // Используем mssg.me как прокладку для TikTok встроенного браузера
+      window.location.href = "https://mssg.me/theultimatee";
+    } else {
+      // В обычных браузерах сразу Telegram
+      window.location.href = telegramLink;
+    }
+  </script>
+</body>
+</html>
