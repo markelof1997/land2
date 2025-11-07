@@ -55,20 +55,15 @@
   <h1>Подключись к нашему Telegram-каналу</h1>
   <p>Нажми на кнопку ниже 👇</p>
 
- <button onclick="window.location.href='/go'">Перейти в Telegram</button>
-
+  <button id="openTelegram">Перейти в Telegram</button>
 
   <div class="hint">Если не открывается — нажми ••• и выбери «Открыть в браузере»</div>
 
-  <!-- index.html -->
-<button id="openTelegram">Перейти в Telegram</button>
-
-<script>
-  document.getElementById("openTelegram").addEventListener("click", () => {
-    // Просто идём на прокладку /go.html на твоём домене
-    window.location.href = "/go.html";
-  });
-</script>
-
+  <script>
+    document.getElementById("openTelegram").addEventListener("click", () => {
+      // Переходим на прокладку /go.html
+      window.location.href = "/go.html";
+    });
+  </script>
 </body>
 </html>
