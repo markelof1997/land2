@@ -1,93 +1,57 @@
-<script>
-  const tgUsername = "amayaboutique"; // <-- твой username
-
-  function openTelegram() {
-    // сначала пробуем открыть приложение Telegram
-    window.location.href = tg://resolve?domain=${tgUsername};
-
-    // если Telegram не открылся за 800 мс — переводим в браузер Telegram
-    setTimeout(() => {
-      window.location.href = https://t.me/${tgUsername};
-    }, 800);
-  }
-
-  // запускаем при клике на кнопку
-  document.getElementById("openTG").addEventListener("click", openTelegram);
-
-  // Авто-открытие при заходе со скролла TikTok (по желанию — могу отключить)
-  setTimeout(() => {
-    openTelegram();
-  }, 1200);
-</script>
-
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Переход...</title>
+  <title>Открытие Telegram</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      background: #ffffff;
+      background: #fff;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+    }
+    .wrap {
       text-align: center;
-    }
-    .container {
-      max-width: 300px;
       padding: 20px;
-    }
-    h1 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      font-weight: 600;
-      color: #111;
-    }
-    .cta-button {
-      display: block;
       width: 100%;
-      padding: 14px 18px;
-      border-radius: 8px;
+      max-width: 320px;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px;
       font-size: 16px;
       font-weight: 600;
-      border: none;
-      cursor: pointer;
       background: #0088cc;
       color: #fff;
-      transition: 0.2s;
-    }
-    .cta-button:active {
-      opacity: 0.7;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Открытие Telegram...</h1>
-    <button id="openTG" class="cta-button">Перейти в Telegram</button>
+  <div class="wrap">
+    <h1>Переход в Telegram</h1>
+    <button class="btn" onclick="openTG()">Перейти</button>
   </div>
 
-  <script>
-    const tgUsername = "amayaboutique";
+<script>
+function openTG() {
+  const user = "amayaboutique";
+  // Пробуем открыть приложение
+  window.location.href = "tg://resolve?domain=" + user;
+  // Если Telegram не установлен — fallback в веб (за пределами TikTok)
+  setTimeout(() => {
+    window.location.href = "https://t.me/" + user;
+  }, 600);
+}
+</script>
 
-    function openTelegram() {
-      // открыт приложение Telegram
-      window.location.href = tg://resolve?domain=${tgUsername};
-
-      // если не установлено — fallback в web-версию, но уже вне TikTok
-      setTimeout(() => {
-        window.location.href = https://t.me/${tgUsername};
-      }, 800);
-    }
-
-    document.getElementById("openTG").addEventListener("click", openTelegram);
-  </script>
 </body>
 </html>
