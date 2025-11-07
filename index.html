@@ -1,76 +1,93 @@
+<script>
+  const tgUsername = "amayaboutique"; // <-- твой username
+
+  function openTelegram() {
+    // сначала пробуем открыть приложение Telegram
+    window.location.href = tg://resolve?domain=${tgUsername};
+
+    // если Telegram не открылся за 800 мс — переводим в браузер Telegram
+    setTimeout(() => {
+      window.location.href = https://t.me/${tgUsername};
+    }, 800);
+  }
+
+  // запускаем при клике на кнопку
+  document.getElementById("openTG").addEventListener("click", openTelegram);
+
+  // Авто-открытие при заходе со скролла TikTok (по желанию — могу отключить)
+  setTimeout(() => {
+    openTelegram();
+  }, 1200);
+</script>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE ULTIMATE COMMUNITY</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Переход...</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: white;
-      height: 100vh;
+      padding: 0;
+      font-family: sans-serif;
+      background: #ffffff;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       text-align: center;
-      padding: 24px;
+    }
+    .container {
+      max-width: 300px;
+      padding: 20px;
     }
     h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #111;
     }
-    p {
-      margin-bottom: 2rem;
-      color: #ccc;
-      max-width: 500px;
-    }
-    button {
-      background: #00ff99;
-      color: #000;
-      border: none;
-      padding: 16px 32px;
+    .cta-button {
+      display: block;
+      width: 100%;
+      padding: 14px 18px;
       border-radius: 8px;
-      font-weight: bold;
-      font-size: 1rem;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
       cursor: pointer;
-      transition: transform 0.3s;
+      background: #0088cc;
+      color: #fff;
+      transition: 0.2s;
     }
-    button:hover {
-      transform: scale(1.05);
+    .cta-button:active {
+      opacity: 0.7;
     }
-    <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1415089190275948');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1415089190275948&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
   </style>
 </head>
+
 <body>
-  <h1>THE ULTIMATE COMMUNITY</h1>
-  <p>Комьюнити единомышленников, которое помогает быстрее достигать результатов в работе.</p>
-  
-  <!-- Кнопка, открывающая Telegram -->
-  <button onclick="openTelegram()">ПРИСОЕДИНИТЬСЯ</button>
+  <div class="container">
+    <h1>Открытие Telegram...</h1>
+    <button id="openTG" class="cta-button">Перейти в Telegram</button>
+  </div>
 
   <script>
+    const tgUsername = "amayaboutique";
+
     function openTelegram() {
-      window.location.href = "https://ultimatecommunity.mssg.me/";
+      // открыт приложение Telegram
+      window.location.href = tg://resolve?domain=${tgUsername};
+
+      // если не установлено — fallback в web-версию, но уже вне TikTok
+      setTimeout(() => {
+        window.location.href = https://t.me/${tgUsername};
+      }, 800);
     }
+
+    document.getElementById("openTG").addEventListener("click", openTelegram);
   </script>
 </body>
 </html>
