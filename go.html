@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Переходим в Telegram...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Переход в Telegram</title>
   <style>
-    body { text-align:center; padding:50px; font-family:sans-serif; background:#fafafa; color:#333; }
-    .loader { width:50px; height:50px; border:5px solid #ccc; border-top-color:#0088cc; border-radius:50%; animation:spin 1s linear infinite; margin:20px auto; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    a { color:#0088cc; text-decoration:none; }
+    body {
+      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #fafafa;
+      text-align: center;
+      color: #222;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    button {
+      background: #0088cc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 16px 34px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #0077b5;
+    }
+    .hint {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h2>Переходим в Telegram...</h2>
-  <div class="loader"></div>
-  <p>Если Telegram не открылся автоматически — <a href="tg://resolve?domain=theultimatee">нажмите сюда</a></p>
+  <h1>Подключись к нашему Telegram</h1>
+  <p>Нажми на кнопку ниже, чтобы открыть канал</p>
+
+  <button id="openTelegram">Открыть Telegram</button>
+
+  <div class="hint">
+    Если не открылось — нажми ••• и выбери «Открыть в браузере»
+  </div>
 
   <script>
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isTikTok = /tiktok/i.test(ua);
-
-    if (isTikTok) {
-      // создаём скрытую ссылку с tg://
-      const link = document.createElement('a');
-      link.href = "tg://resolve?domain=theultimatee";
-      link.target = "_blank";
-      document.body.appendChild(link);
-
-      // кликаем по ней через JS
-      setTimeout(() => { link.click(); }, 500);
-
-      // fallback alert
-      setTimeout(() => {
-        alert("Если Telegram не открылся, нажмите ••• в TikTok и выберите 'Открыть в браузере'");
-      }, 1200);
-    } else {
-      // Обычные браузеры — редирект через mssg.me
-      window.location.href = "https://ultimatecommunity.mssg.me/";
-    }
+    document.getElementById("openTelegram").addEventListener("click", () => {
+      // Переход через серверный редирект на твоём домене
+      window.location.href = "/api/telegram";
+    });
   </script>
 </body>
 </html>
