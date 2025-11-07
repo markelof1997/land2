@@ -38,28 +38,40 @@
 <body>
   <div class="wrap">
     <h1>Переход в Telegram</h1>
-    <button onclick="redirect()">Перейти в Telegram</button>
+   <button id="tgBtn" style="padding:14px 20px; border-radius:8px; border:none; font-size:18px; font-weight:600; cursor:pointer;">
+    Открыть Telegram
+</button>
   </div>
 
 <script>
-function redirect() {
-  const url = window.location.href.split('?')[0] + '?open=1';
+function isInTikTokWebView() {
+  return /tiktok/i.test(navigator.userAgent);
+}
+
+function openExternal() {
+  const url = "https://t.me/theultimatee";
   window.location.href = url;
 }
 
-(function() {
-  const params = new URLSearchParams(window.location.search);
-  
-  if (params.get('open') === '1') {
-    setTimeout(() => {
-      window.location = "tg://resolve?domain=amayaboutique";
-    }, 400);
+document.getElementById("tgBtn").addEventListener("click", function () {
 
-    setTimeout(() => {
-      window.location.href = "https://t.me/amayaboutique";
-    }, 1200);
+  // 1. Если мы внутри браузера TikTok → насильно открываем Safari/Chrome
+  if (isInTikTokWebView()) {
+
+    // iPhone — открываем через safari
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      window.open("https://t.me/theultimatee", "_blank");
+      return;
+    }
+
+    // Android — открываем через intent (обходит встроенный WebView)
+    window.location.href = "intent://t.me/theultimatee#Intent;scheme=https;package=org.telegram.messenger;end";
+    return;
   }
-})();
+
+  // 2. Если уже внешний браузер → открываем сразу
+  openExternal();
+});
 </script>
 
 </body>
