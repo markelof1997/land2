@@ -45,18 +45,34 @@
 function openTG() {
   const user = "amayaboutique";
 
-  // Принудительно выкидываем из браузера TikTok в Safari
-  window.location.href = "intent://t.me/" + user + "#Intent;scheme=https;package=com.android.chrome;end";
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  // После выхода — пробуем открыть приложение Telegram
-  setTimeout(() => {
-    window.location.href = "tg://resolve?domain=" + user;
-  }, 300);
+  if (isIOS) {
+    // iPhone: Принудительно выходим во внешнее приложение (App Store)
+    window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
 
-  // Если нет приложения — fallback на web, но уже в Safari
-  setTimeout(() => {
-    window.location.href = "https://t.me/" + user;
-  }, 900);
+    // После того как Safari/App Store поднялись — открываем Telegram
+    setTimeout(() => {
+      window.location.href = "tg://resolve?domain=" + user;
+    }, 1200);
+
+    // Если Telegram не установлен — fallback на веб, но уже в Safari
+    setTimeout(() => {
+      window.location.href = "https://t.me/" + user;
+    }, 2000);
+
+  } else {
+    // Android: через intent выкидываем из TikTok WebView
+    window.location.href = "intent://t.me/" + user + "#Intent;scheme=https;package=com.android.chrome;end";
+
+    setTimeout(() => {
+      window.location.href = "tg://resolve?domain=" + user;
+    }, 300);
+
+    setTimeout(() => {
+      window.location.href = "https://t.me/" + user;
+    }, 900);
+  }
 }
 </script>
 
