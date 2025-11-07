@@ -48,30 +48,25 @@ function openTG() {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   if (isIOS) {
-    // iPhone: Принудительно выходим во внешнее приложение (App Store)
+    // 1. Выталкиваем из TikTok во внешнее приложение (App Store)
     window.location.href = "https://apps.apple.com/app/telegram-messenger/id686449807";
 
-    // После того как Safari/App Store поднялись — открываем Telegram
+    // 2. Ждем пока App Store откроется (человек жмет "Відкрити" → Telegram открывается)
+    // 3. Потом Telegram получает ссылку на канал из Safari
     setTimeout(() => {
-      window.location.href = "tg://resolve?domain=" + user;
-    }, 1200);
-
-    // Если Telegram не установлен — fallback на веб, но уже в Safari
-    setTimeout(() => {
-      window.location.href = "https://t.me/" + user;
-    }, 2000);
+      // Сначала открываем Safari:
+      window.open("https://t.me/" + user, "_blank");
+    }, 1800);
 
   } else {
-    // Android: через intent выкидываем из TikTok WebView
+    // Android
     window.location.href = "intent://t.me/" + user + "#Intent;scheme=https;package=com.android.chrome;end";
-
     setTimeout(() => {
       window.location.href = "tg://resolve?domain=" + user;
-    }, 300);
-
+    }, 400);
     setTimeout(() => {
       window.location.href = "https://t.me/" + user;
-    }, 900);
+    }, 1000);
   }
 }
 </script>
