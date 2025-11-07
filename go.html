@@ -22,26 +22,32 @@
       margin: 20px auto;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+    a { color: #0088cc; text-decoration: none; }
   </style>
 </head>
 <body>
   <h2>Переходим в Telegram...</h2>
   <div class="loader"></div>
-  <p>Если не открылось — <a href="https://t.me/theultimatee" target="_blank">нажмите сюда</a>.</p>
+  <p>Если Telegram не открылся автоматически — <a href="https://t.me/theultimatee" target="_blank">нажмите сюда</a></p>
 
   <script>
-    // Попытка открыть Telegram напрямую через ссылку
-    const telegramLink = "https://t.me/theultimatee";
+    const telegramLink = "https://ultimatecommunity.mssg.me/";
 
-    // Проверяем, открываем ли в TikTok встроенном браузере
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const isTikTok = /tiktok/i.test(userAgent);
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isTikTok = /tiktok/i.test(ua);
 
     if (isTikTok) {
-      // Используем mssg.me как прокладку для TikTok встроенного браузера
-      window.location.href = "https://mssg.me/theultimatee";
+      // TikTok встроенный браузер: открываем через window.open, чтобы выкинуть во внешний браузер
+      const newWindow = window.open(telegramLink, "_blank");
+
+      // Если блокирует, показываем подсказку
+      if (!newWindow) {
+        setTimeout(() => {
+          alert("Если Telegram не открылся, нажмите ••• в TikTok и выберите 'Открыть в браузере', затем попробуйте снова 🔗");
+        }, 800);
+      }
     } else {
-      // В обычных браузерах сразу Telegram
+      // Обычные браузеры — редирект сразу
       window.location.href = telegramLink;
     }
   </script>
