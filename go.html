@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Переход в Telegram</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перейти в Telegram</title>
   <style>
     body {
-      font-family: "Inter", sans-serif;
+      font-family: Inter, sans-serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
-      background: #fafafa;
       text-align: center;
+      background: #fafafa;
       color: #222;
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 16px;
-      margin-bottom: 30px;
-      color: #555;
-    }
+    h1 { font-size: 28px; margin-bottom: 20px; }
+    p { font-size: 16px; margin-bottom: 30px; color: #555; }
     button {
       background: #0088cc;
       color: white;
@@ -36,31 +29,40 @@
       cursor: pointer;
       transition: background 0.2s ease;
     }
-    button:hover {
-      background: #0077b5;
-    }
-    .hint {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #777;
-    }
+    button:hover { background: #0077b5; }
+    .hint { margin-top: 20px; font-size: 14px; color: #777; display:none; }
   </style>
 </head>
 <body>
-  <h1>Подключись к нашему Telegram</h1>
-  <p>Нажми на кнопку ниже, чтобы открыть канал</p>
+  <h1>Открыть Telegram</h1>
+  <p>Нажми на кнопку ниже, чтобы подключиться к нашему каналу</p>
 
-  <button id="openTelegram">Открыть Telegram</button>
-
-  <div class="hint">
-    Если не открылось — нажми ••• и выбери «Открыть в браузере»
-  </div>
+  <button id="openTelegram">Перейти</button>
+  <div class="hint" id="hint">Если не открылось — нажми ••• → «Открыть в браузере», затем снова кнопку</div>
 
   <script>
+    const tgAppLink = "tg://resolve?domain=theultimatee"; // Ссылка для приложения
+    const fallbackPage = "/mssg.html"; // Прокладка на твоём домене
+
     document.getElementById("openTelegram").addEventListener("click", () => {
-      // Переход через серверный редирект на твоём домене
-      window.location.href = "/api/telegram";
+      const ua = navigator.userAgent || "";
+      const isTikTok = ua.includes("TikTok");
+
+      if(isTikTok) {
+        // Попытка открыть через Telegram app
+        window.location = tgAppLink;
+
+        // Если блокировка — через секунду открываем прокладку
+        setTimeout(() => {
+          window.location.href = fallbackPage;
+          document.getElementById("hint").style.display = "block";
+        }, 1000);
+      } else {
+        // В обычных браузерах сразу прокладка
+        window.location.href = fallbackPage;
+      }
     });
   </script>
 </body>
 </html>
+
