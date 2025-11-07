@@ -60,30 +60,15 @@
 
   <div class="hint">Если не открывается — нажми ••• и выбери «Открыть в браузере»</div>
 
-  <script>
-    const telegramLink = "https://ultimatecommunity.mssg.me/";
+  <!-- index.html -->
+<button id="openTelegram">Перейти в Telegram</button>
 
-    document.getElementById("openTelegram").addEventListener("click", () => {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      const isTikTok = ua.includes("TikTok");
+<script>
+  document.getElementById("openTelegram").addEventListener("click", () => {
+    // Просто идём на прокладку /go.html на твоём домене
+    window.location.href = "/go.html";
+  });
+</script>
 
-      if (isTikTok) {
-        try {
-          // Пытаемся открыть ссылку в новой вкладке (часто выбрасывает наружу)
-          window.open(telegramLink, "_blank");
-        } catch (e) {}
-
-        // Если TikTok всё ещё блокирует, показываем подсказку
-        setTimeout(() => {
-          alert(
-            "Если Telegram не открылся, нажми ••• в TikTok и выбери 'Открыть в браузере', затем попробуй снова 🔗"
-          );
-        }, 1200);
-      } else {
-        // Если это нормальный браузер — просто редиректим
-        window.location.href = telegramLink;
-      }
-    });
-  </script>
 </body>
 </html>
