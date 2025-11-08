@@ -13,7 +13,6 @@
     plausible.init();
   </script>
 
-  <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
@@ -26,17 +25,17 @@
       text-align: center;
       background: linear-gradient(135deg, #fdf1f4 0%, #f9dce4 50%, #f6c6d1 100%);
       color: #2a1a1f;
-      padding: 20px;
-      overflow-x: hidden;
+      padding: 0 15px 80px;
     }
 
     .container {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border-radius: 20px;
-      padding: 40px 25px 100px;
+      padding: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       max-width: 460px;
       width: 100%;
+      margin-top: 120px; /* место для подарка сверху */
     }
 
     h1 {
@@ -62,6 +61,10 @@
     }
 
     .gift {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
       background: linear-gradient(90deg, #ffebf2, #ffe2ec);
       border: 2px dashed #b91c50;
       border-radius: 14px;
@@ -69,9 +72,11 @@
       font-weight: 600;
       font-size: 18px;
       color: #b91c50;
-      margin: 25px 0;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      z-index: 100;
       animation: pulse 2s infinite ease-in-out;
+      max-width: 90%;
+      text-align: center;
     }
 
     .benefits {
@@ -120,7 +125,6 @@
       color: #b91c50;
     }
 
-    /* Липкая кнопка */
     .sticky-btn {
       position: fixed;
       bottom: 15px;
@@ -137,7 +141,6 @@
       width: calc(100% - 40px);
       max-width: 400px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-      animation: pulse 2.5s infinite ease-in-out;
       z-index: 10;
     }
 
@@ -202,6 +205,8 @@
 </head>
 
 <body>
+  <div class="gift">🎁 Для новых участниц — бесплатная личная консультация с главным коучем (1 час)</div>
+
   <div class="container">
     <h1>Клуб женского развития</h1>
     <p>Место, где женщины вдохновляют друг друга, находят поддержку, мотивацию и внутреннюю силу для перемен.</p>
@@ -209,10 +214,6 @@
     <div class="invite">
       Раньше попасть в клуб можно было только по личному приглашению.  
       Сегодня вход открыт — но всего на короткое время.
-    </div>
-
-    <div class="gift">🎁 Для новых участниц — подарок!  
-      <br><strong>Бесплатная личная консультация с главным коучем (1 час)</strong>
     </div>
 
     <ul class="benefits">
@@ -262,23 +263,22 @@
     <div class="hint">Если не открывается — нажми ••• и выбери «Открыть в браузере»</div>
   </div>
 
-  <button id="openTelegram" class="sticky-btn">Открыть доступ и получить подарок 🎁</button>
+  <button id="openTelegram" class="sticky-btn">Стать участником клуба</button>
 
   <script>
-    // Таймер 13 минут
     let time = 13 * 60;
     const timerEl = document.getElementById('timer');
     const interval = setInterval(() => {
       const m = Math.floor(time / 60);
       const s = time % 60;
-      timerEl.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      timerEl.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
       time--;
-      if (time < 0) {
+      if(time < 0){
         clearInterval(interval);
         timerEl.textContent = "⚠️ Вход может быть закрыт";
         document.getElementById('openTelegram').textContent = "Попробовать войти сейчас";
       }
-    }, 1000);
+    },1000);
 
     document.getElementById("openTelegram").addEventListener("click", () => {
       plausible('click-telegram');
