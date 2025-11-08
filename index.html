@@ -72,11 +72,12 @@
 
   <script>
     document.getElementById("openTelegram").addEventListener("click", () => {
-      // Переходим напрямую на сайт mssg.me
+      // Отправляем событие в Plausible
+      plausible('click-telegram');
+
+      // После этого переходим на Telegram-ссылку
       window.location.href = "https://ultimatecommunity.mssg.me/";
     });
   </script>
 </body>
 </html>
-
-
