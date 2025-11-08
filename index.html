@@ -22,40 +22,46 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
       text-align: center;
-      background: linear-gradient(135deg, #f8d9e3 0%, #f2a3b6 50%, #e68cb4 100%);
+      background: linear-gradient(135deg, #fdf1f4 0%, #f9dce4 50%, #f6c6d1 100%);
       color: #2a1a1f;
-      padding: 20px;
+      padding: 40px 20px 80px;
     }
 
     .container {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       border-radius: 20px;
-      padding: 40px 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      max-width: 420px;
+      padding: 40px 25px 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      max-width: 460px;
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      margin-bottom: 12px;
+      font-size: 34px;
+      margin-bottom: 14px;
       color: #2b0f1a;
     }
 
     p {
       font-size: 17px;
-      margin-bottom: 20px;
-      line-height: 1.5;
+      margin-bottom: 22px;
+      line-height: 1.55;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #7b6067;
+      margin-bottom: 30px;
     }
 
     .list {
       text-align: left;
       font-size: 16px;
-      margin: 15px auto 30px;
+      margin: 15px auto 35px;
       padding: 0 20px;
     }
 
@@ -63,15 +69,13 @@
       margin-bottom: 10px;
     }
 
-    .price {
-      font-size: 20px;
+    .invite {
+      background: #fff2f6;
+      border-left: 4px solid #b91c50;
+      padding: 15px;
       margin-bottom: 25px;
-      font-weight: 600;
-    }
-
-    .price del {
-      color: #a8a8a8;
-      margin-right: 6px;
+      font-style: italic;
+      color: #7a404d;
     }
 
     .timer {
@@ -104,10 +108,16 @@
       color: #555;
     }
 
+    .members {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
     .avatars {
       display: flex;
       justify-content: center;
-      margin: 15px 0 30px;
+      margin: 10px 0 30px;
     }
 
     .avatars img {
@@ -119,10 +129,45 @@
       object-fit: cover;
     }
 
-    .members {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 10px;
+    .reviews {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .review {
+      background: rgba(255,255,255,0.8);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .review img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 14px;
+      object-fit: cover;
+    }
+
+    .review-text {
+      font-size: 15px;
+      color: #3b2b2f;
+    }
+
+    .review-text strong {
+      display: block;
+      font-weight: 600;
+      color: #b91c50;
+      margin-bottom: 4px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #777;
     }
   </style>
 </head>
@@ -130,18 +175,18 @@
 <body>
   <div class="container">
     <h1>Клуб женского развития</h1>
-    <p>Закрытое пространство для девушек, которые хотят вдохновения, поддержки и личного роста.  
-    Каждый день внутри клуба — живое общение, мотивация и полезные инсайты.</p>
+    <p>Пространство, где женщины вдохновляют друг друга становиться лучше, делятся опытом, идеями и внутренней силой.</p>
+
+    <div class="invite">
+      Раньше попасть в клуб можно было только по личному приглашению.  
+      Сегодня вход открыт — но только на ограниченное время.
+    </div>
 
     <ul class="list">
-      <li>💫 Советы по уверенности и гармонии</li>
-      <li>💰 Личные истории и вдохновляющий опыт</li>
-      <li>❤️ Пространство, где тебя поймут и поддержат</li>
+      <li>✨ Поддержка и энергия единомышленниц</li>
+      <li>💬 Живое общение и практики саморазвития</li>
+      <li>💖 Атмосфера гармонии и уверенности</li>
     </ul>
-
-    <div class="price">
-      Раньше доступ стоил <del>$149</del> — сегодня <span style="color:#b91c50;">БЕСПЛАТНО</span>
-    </div>
 
     <div class="members">Уже более 1200 участниц онлайн</div>
     <div class="avatars">
@@ -155,8 +200,33 @@
     <div class="timer" id="timer">13:00</div>
 
     <button id="openTelegram">Открыть доступ в клуб</button>
-
     <div class="hint">Если не открывается — нажми ••• и выбери «Открыть в браузере»</div>
+
+    <div class="reviews">
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="">
+        <div class="review-text">
+          <strong>Анна, 27</strong>
+          «Благодаря клубу я нашла поддержку, которую не могла найти нигде. Атмосфера невероятная!»
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="">
+        <div class="review-text">
+          <strong>Мария, 34</strong>
+          «Каждый день читаю что-то вдохновляющее. Реально помогает двигаться вперёд и верить в себя.»
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/19.jpg" alt="">
+        <div class="review-text">
+          <strong>София, 22</strong>
+          «Я пришла просто посмотреть, а теперь чувствую себя частью чего-то важного 💕»
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">Вход открыт ограниченное время — успей присоединиться.</div>
   </div>
 
   <script>
